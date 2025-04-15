@@ -1,0 +1,358 @@
+/* Light Theme - Inspired by macOS Style */
+
+/* Global & Base Widgets */
+QWidget {
+    font-family: "SF Pro Display", "Segoe UI", "Cantarell", sans-serif; /* Use loaded font first, then fallbacks */
+    font-size: 10pt;
+    background-color: #ECECEC; /* Light gray window background */
+    color: #222222; /* Dark text */
+    border: none; /* No borders by default */
+}
+
+QMainWindow {
+    background-color: #ECECEC;
+}
+
+/* Use a slightly different background for input widgets */
+QLineEdit, QPlainTextEdit, QSpinBox, QComboBox {
+    background-color: #FFFFFF; /* White background for inputs */
+    border: 1px solid #CCCCCC; /* Subtle gray border */
+    border-radius: 5px;
+    padding: 4px 6px;
+    color: #222222;
+}
+
+QPlainTextEdit {
+    font-family: "Courier New", Consolas, Monaco, monospace; /* Override for code editor */
+    font-size: 11pt;
+    background-color: #FFFFFF;
+    color: #111111;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+}
+
+QLineEdit:focus, QPlainTextEdit:focus, QSpinBox:focus, QComboBox:focus {
+    border: 1px solid #007AFF; /* Blue border on focus */
+    /* Consider adding selection-background-color */
+}
+
+/* Buttons */
+QPushButton {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #FFFFFF, stop: 1 #F6F6F6); /* Subtle gradient */
+    color: #222222;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-weight: bold; /* Use the bold variant */
+    min-height: 18px; /* Ensure minimum height */
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #F8F8F8, stop: 1 #EFEFEF);
+    border-color: #BBBBBB;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #E1E1E1, stop: 1 #E7E7E7);
+    border-color: #ADADAD;
+}
+
+QPushButton:disabled {
+    background-color: #F0F0F0;
+    color: #AAAAAA;
+    border-color: #D0D0D0;
+}
+
+/* Welcome Screen Specific Buttons (Example - adjust IDs if needed) */
+WelcomeScreen QPushButton#CreateButton {
+    background-color: #007AFF; /* Blue */
+    color: white;
+    border: none; /* Override default border */
+}
+WelcomeScreen QPushButton#CreateButton:hover { background-color: #1A94FF; }
+WelcomeScreen QPushButton#CreateButton:pressed { background-color: #005EC4; }
+
+WelcomeScreen QPushButton#OpenButton {
+    background-color: #34C759; /* Green */
+    color: white;
+    border: none;
+}
+WelcomeScreen QPushButton#OpenButton:hover { background-color: #40DE66; }
+WelcomeScreen QPushButton#OpenButton:pressed { background-color: #29A347; }
+
+/* Tabs */
+QTabWidget::pane {
+    border: 1px solid #CCCCCC;
+    border-top: none; /* Pane border often not needed if tabs have bottom border */
+    border-radius: 0px 0px 5px 5px;
+    background-color: #F8F8F8; /* Slightly off-white pane */
+}
+
+QTabBar {
+    font-weight: bold; /* Bold tab labels */
+}
+
+QTabBar::tab {
+    background: #E0E0E0; /* Inactive tab background */
+    border: 1px solid #CCCCCC;
+    border-bottom: none; /* Join with pane */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 6px 12px;
+    margin-right: 1px; /* Small gap between tabs */
+    color: #555555; /* Dark gray text for inactive tabs */
+}
+
+QTabBar::tab:selected {
+    background: #F8F8F8; /* Match pane background */
+    color: #111111; /* Darker text for selected tab */
+    border-bottom: 1px solid #F8F8F8; /* Hide bottom border to merge visually */
+    /* margin-bottom: -1px; /* Pull tab down slightly */
+}
+
+QTabBar::tab:hover:!selected {
+    background: #ECECEC;
+}
+
+QTabBar::tab:last {
+    margin-right: 0; /* No gap after last tab */
+}
+
+QTabWidget::tab-bar {
+    alignment: left;
+    left: 5px; /* Indent tab bar slightly */
+}
+
+/* Tree View (File Explorer) */
+QTreeView {
+    background-color: #FFFFFF; /* White background */
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    /* alternate-background-color: #F8F8F8; /* Optional slightly diff background */
+}
+
+QTreeView::item {
+    padding-top: 3px;    /* Spacing between items */
+    padding-bottom: 3px;
+    padding-left: 2px;
+    border-radius: 3px; /* Slightly round item highlight */
+}
+
+QTreeView::item:hover {
+    background-color: #E8F3FF; /* Light blue hover */
+    color: #111111;
+}
+
+QTreeView::item:selected {
+    background-color: #007AFF; /* Blue selection */
+    color: #FFFFFF; /* White text on selection */
+}
+
+/* Make branch arrows more subtle */
+QTreeView::branch {
+    background: transparent;
+}
+QTreeView::branch:has-children:!has-siblings:closed,
+QTreeView::branch:closed:has-children:has-siblings {
+        border-image: none;
+        image: url(:/qt-project.org/styles/commonstyle/images/right-arrow-16.png); /* Use Qt's default arrow */
+}
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings  {
+        border-image: none;
+        image: url(:/qt-project.org/styles/commonstyle/images/down-arrow-16.png); /* Use Qt's default arrow */
+}
+/* You might need to provide your own arrow icons if defaults aren't good */
+
+
+/* ScrollBars */
+QScrollBar:vertical {
+    border: none;
+    background: #F0F0F0; /* Match background */
+    width: 10px;
+    margin: 0px 0px 0px 0px;
+}
+QScrollBar::handle:vertical {
+    background: #B0B0B0; /* Mid-gray handle */
+    min-height: 20px;
+    border-radius: 5px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #909090;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+    height: 0px; /* Hide arrows */
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QScrollBar:horizontal { /* Similar style for horizontal */
+    border: none;
+    background: #F0F0F0;
+    height: 10px;
+    margin: 0px 0px 0px 0px;
+}
+QScrollBar::handle:horizontal {
+    background: #B0B0B0;
+    min-width: 20px;
+    border-radius: 5px;
+}
+QScrollBar::handle:horizontal:hover {
+    background: #909090;
+}
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    border: none; background: none; width: 0px;
+}
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}
+
+
+/* ToolBar */
+QToolBar {
+    background-color: #E8E8E8; /* Slightly different background */
+    border: none;
+    padding: 2px;
+    spacing: 4px; /* Spacing between buttons */
+}
+QToolBar::separator {
+    height: 1px;
+    background-color: #C0C0C0;
+    margin-left: 4px;
+    margin-right: 4px;
+    width: 1px; /* Vertical separator */
+}
+QToolButton {
+    background-color: transparent; /* Make toolbar buttons flat */
+    border: 1px solid transparent;
+    padding: 4px;
+    border-radius: 4px;
+}
+QToolButton:hover {
+    background-color: #D8D8D8; /* Subtle hover */
+    border: 1px solid #C0C0C0;
+}
+QToolButton:pressed {
+    background-color: #C8C8C8;
+}
+QToolButton:checked { /* For toggle actions */
+    background-color: #D0D0D0;
+    border: 1px solid #B0B0B0;
+}
+
+/* Menu */
+QMenuBar {
+    background-color: #E8E8E8; /* Match toolbar */
+    color: #222222;
+    border: none;
+}
+QMenuBar::item {
+    background: transparent;
+    padding: 4px 8px;
+}
+QMenuBar::item:selected { /* Hover/Select */
+    background: #D0D0D0;
+}
+QMenu {
+    background-color: #FFFFFF; /* White menu background */
+    border: 1px solid #B0B0B0;
+    color: #222222;
+    padding: 2px; /* Padding around items */
+}
+QMenu::item {
+    padding: 4px 20px 4px 20px; /* Item padding */
+    border-radius: 4px;
+}
+QMenu::item:selected { /* Hover/Select */
+    background-color: #007AFF; /* Blue highlight */
+    color: #FFFFFF;
+}
+QMenu::separator {
+    height: 1px;
+    background: #D0D0D0;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* Dock Widget */
+QDockWidget {
+    titlebar-close-icon: url(:/qt-project.org/styles/commonstyle/images/standardbutton-close-16.png);
+    titlebar-normal-icon: url(:/qt-project.org/styles/commonstyle/images/standardbutton-restore-16.png); /* Float icon */
+}
+QDockWidget::title {
+    text-align: left;
+    background: #D8D8D8; /* Title bar background */
+    padding: 5px;
+    border: 1px solid #C0C0C0;
+    border-bottom: 1px solid #C8C8C8; /* Line below title */
+    font-weight: bold;
+    color: #333333;
+    border-radius: 5px 5px 0px 0px; /* Round top corners */
+}
+/* Remove title if widget is floated */
+QDockWidget[floatable="true"]::title {
+     border-radius: 0px; /* No rounding when floating */
+}
+
+/* Splitter */
+QSplitter::handle {
+    background-color: #D0D0D0; /* Handle color */
+    /* image: url(path/to/handle/icon.png); Optional handle image */
+}
+QSplitter::handle:horizontal {
+    width: 1px; /* Thin vertical handle */
+    margin: 0 3px; /* Add visual spacing */
+}
+QSplitter::handle:vertical {
+    height: 1px; /* Thin horizontal handle */
+    margin: 3px 0; /* Add visual spacing */
+}
+QSplitter::handle:pressed {
+    background-color: #007AFF; /* Highlight when dragging */
+}
+
+/* Status Bar */
+QStatusBar {
+    background-color: #E8E8E8; /* Match toolbar/menubar */
+    border-top: 1px solid #C0C0C0;
+    color: #444444;
+}
+QStatusBar::item {
+    border: none; /* Remove borders between items */
+}
+
+QMenuBar::item {
+    /* --- Font Settings --- */
+    font-family: "SF Pro Text"; /* <-- Use the family name loaded for SF-Pro-Text-Semibold.otf */
+                                /* (Verify this name from the console output of main.py) */
+    font-weight: 600;          /* Standard numeric weight for Semibold */
+    /* font-size: 10pt; */     /* Optional: Uncomment to set specific size, otherwise inherits app default */
+
+    /* --- Keep Existing/Previous Appearance Settings --- */
+    background: transparent;   /* Example */
+    padding: 4px 8px;        /* Example */
+    /* color: #222222; */      /* Set color based on light/dark theme */
+}
+
+/* Ensure you have hover/selection styles too */
+QMenuBar::item:selected {
+    /* background: #D0D0D0; */ /* Example for light */
+    /* background: #5A5A5A; */ /* Example for dark */
+    /* color: ... */
+}
+
+QDockWidget#FileExplorerDock QTreeView QLineEdit {
+    /* Style the inline editor */
+    font-size: 10pt; /* Or your desired size */
+    padding: 2px 4px;
+    border: 1px solid #007AFF; /* Use theme's focus color */
+    background-color: #FFFFFF; /* Use theme's input background */
+    color: #222222; /* Use theme's text color */
+    border-radius: 3px; /* Optional rounding */
+    /* No min-width/min-height here - handled by delegate */
+}
+
+/* Add other specific widget styles as needed */
